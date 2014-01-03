@@ -34,7 +34,7 @@ module vertex(height, idler_offset, idler_space) {
       union() {
         intersection() {
           translate([0, 22, 0])
-            cylinder(r=36, h=height, center=true, $fn=60);
+            cylinder(r=21+extrusion, h=height, center=true, $fn=60);
           translate([0, -37, 0]) rotate([0, 0, 30])
             cylinder(r=50, h=height+1, center=true, $fn=6);
         }
