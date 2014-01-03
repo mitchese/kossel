@@ -77,7 +77,7 @@ module vertex(height, idler_offset, idler_space) {
         translate([0, -7.5-extra_radius, z+7.5-height/2]) rotate([90, 0, 0])
           screw_socket_cone();
         for (a = [-1, 1]) {
-          rotate([0, 0, 30*a]) translate([-16*a, 111, z+(extrusion/2)-height/2]) {
+          rotate([0, 0, 30*a]) translate([-((extrusion/2)+8.5)*a, 111, z+(extrusion/2)-height/2]) {
             // % rotate([90, 0, 0]) extrusion_cutout(200, 0);
             // Screw sockets.
             for (y = [-88, -44]) {
@@ -86,7 +86,7 @@ module vertex(height, idler_offset, idler_space) {
             // Nut tunnels.
 	    for (z = [-1, 1]) {
 	      scale([1, 1, z]) translate([0, -100, 3]) minkowski() {
-	        rotate([0, 0, -a*30]) cylinder(r=4, h=16, $fn=6);
+	        rotate([0, 0, -a*30]) cylinder(r=4, h=(extrusion/2+8.5), $fn=6);
 		cube([0.1, 5, 0.1], center=true);
 	      }
             }
