@@ -20,7 +20,7 @@ thickness = 3.6;
 
 // OpenBeam or Misumi. Currently only 15x15 mm, but there is a plan
 // to make models more parametric and allow 20x20 mm in the future.
-extrusion = 15;
+extrusion = 20;
 
 // Placement for the NEMA17 stepper motors.
 motor_offset = 44;
