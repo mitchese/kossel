@@ -1,6 +1,7 @@
 include <configuration.scad>;
 
-mount_radius = 7.9;   // Radius from brushless motor mount screws
+mount_radius_2 = 7.9;   // Radius from brushless motor mount screws
+mount_radius_1 = 9.5;   // radius for single mount screw
 screw_hole_radius = 2;// hole size for mount screws
 flange_radius = 5;    // Radius of bearing flange (5mm)
 flange_height = 1.5;  // Height of bearing flange (1.5mm)
@@ -40,15 +41,18 @@ module effector() {
     }
     // Start bearing hole in centre
     translate([0, 0, flange_height])
-     cylinder(r=flange_radius, h=height, $fn=36);
+     cylinder(r=flange_radius, h=height, $fn=72);
     translate([0, 0, -6])
-     cylinder(r=bearing_radius, h=2*height, $fn=36);
+     cylinder(r=bearing_radius, h=2*height, $fn=72);
     // Start mounting holes
     translate([0, 0, -6]); 
-    for (a = [0:90:269]) rotate([0, 0, a]) {
-      translate([0, mount_radius, 0])
-	cylinder(r=screw_hole_radius, h=2*height, center=true, $fn=12);
+    for (a = [0, 180]) rotate([0, 0, a]) {
+      translate([0, mount_radius_2, 0])
+	cylinder(r=screw_hole_radius, h=2*height, center=true, $fn=12); 
     }
+    rotate([0,0,90])
+    translate([0, mount_radius_1, 0])
+     cylinder(r=screw_hole_radius, h=2*height, center=true, $fn=12);
   }
 }
 
